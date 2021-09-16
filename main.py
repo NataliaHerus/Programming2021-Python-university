@@ -1,26 +1,23 @@
-def size_of_array():
+def input_data(array_to_full):
     while True:
         try:
             array_size = int(input('Input an array size: '))
-            if array_size <= 0:
-                print('\nInteger should be bigger than 0')
+            if check_size(array_size) is True:
+                continue
+            for i in range(array_size):
+                array_element = float(input('Input an array element: '))
+                array_to_full.append(array_element)
                 continue
             break
         except ValueError:
-            print('\nPlease enter an number')
+            print('\nPlease try to do everything again and enter an number')
     return array_size
 
 
-def input_elements(new_array, new_size):
-    while True:
-        try:
-            for i in range(new_size):
-                array_element = float(input('Input an array element: '))
-                new_array.append(array_element)
-            break
-        except ValueError:
-            print('\nPlease enter an number')
-    return new_array
+def check_size(array_size):
+    if array_size <= 1:
+        print('\nSize should be bigger than 1')
+        return True
 
 
 def minimum(full_array, whole_size):
@@ -31,8 +28,7 @@ def minimum(full_array, whole_size):
     return min_multiplication
 
 
-size = size_of_array()
 array = []
-input_elements(array, size)
+size = input_data(array)
 result = minimum(array, size)
 print('The minimum of multiplications: ', result)
