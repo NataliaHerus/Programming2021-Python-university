@@ -1,10 +1,20 @@
-def input_data(matrix):
+def check_size():
     while True:
         try:
-            matrix_size = int(input('Input an matrix size: '))
-            if check_size(matrix_size) is True:
+            matrix_size = int(input('Input matrix size: '))
+            if matrix_size < 2:
+                print('\nSize should be bigger than 2')
                 continue
-            print("Your matrix")
+            break
+        except ValueError:
+            print("Please enter an integer positive number")
+    return matrix_size
+
+
+def input_number(matrix_size):
+    while True:
+        try:
+            matrix = []
             for i in range(matrix_size):
                 elements = []
                 for j in range(matrix_size):
@@ -12,14 +22,15 @@ def input_data(matrix):
                 matrix.append(elements)
             break
         except ValueError:
-            print('\nPlease try to do everything again and enter an integer number')
-    return matrix_size
+            print("Please enter an integer number")
+    return matrix
 
 
-def check_size(matrix_size):
-    if matrix_size < 2:
-        print('\nSize should be bigger than 2')
-        return True
+def create_matrix():
+    print("Your matrix is: ")
+    matrix_size = check_size()
+    matrix = input_number(matrix_size)
+    return matrix_size, matrix
 
 
 def print_matrix(matrix, matrix_size):
@@ -49,7 +60,30 @@ def sequence(matrix, matrix_size):
             print(" - ")
 
 
-matrix = []
-size = input_data(matrix)
-print_matrix(matrix, size)
-sequence(matrix, size)
+def choice():
+    while True:
+            try:
+                print("Choose what you want.\n"
+                      "1 - input matrix by yourself and do options\n"
+                      "2 - exit\n")
+                what_chosed = int(input(""))
+                if what_chosed == 1:
+                    matrix_size, matrix = create_matrix()
+                    print_matrix(matrix, matrix_size)
+                    sequence(matrix, matrix_size)
+                    continue
+                elif what_chosed == 2:
+                    break
+                elif what_chosed != 1 and what_chosed != 2:
+                    print("Enter right option")
+                    continue
+            except ValueError:
+                print("Something went wrong, enter an number you want:")
+                continue
+            except KeyboardInterrupt:
+                print("Something went wrong, enter an number you want:")
+                continue
+            break
+
+
+choice()
