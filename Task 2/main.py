@@ -62,28 +62,28 @@ def sequence(matrix, matrix_size):
 
 def choice():
     while True:
-            try:
-                print("Choose what you want.\n"
-                      "1 - input matrix by yourself and do options\n"
-                      "2 - exit\n")
-                what_chosed = int(input(""))
-                if what_chosed == 1:
-                    matrix_size, matrix = create_matrix()
-                    print_matrix(matrix, matrix_size)
-                    sequence(matrix, matrix_size)
-                    continue
-                elif what_chosed == 2:
-                    break
-                elif what_chosed != 1 and what_chosed != 2:
-                    print("Enter right option")
-                    continue
-            except ValueError:
-                print("Something went wrong, enter an number you want:")
+        try:
+            print("Choose what you want.\n"
+                  "1 - input matrix by yourself and do options\n"
+                  "2 - exit\n")
+            what_chosed = int(input(""))
+            if what_chosed == 1:
+                matrix_size, matrix = create_matrix()
+                print_matrix(matrix, matrix_size)
+                sequence(matrix, matrix_size)
                 continue
-            except KeyboardInterrupt:
-                print("Something went wrong, enter an number you want:")
+            elif what_chosed == 2:
+                break
+            else:
+                print("Enter right option")
                 continue
-            break
+        except ValueError:
+            print("Something went wrong, enter an number you want:")
+            continue
+        except KeyboardInterrupt:
+            print("Something went wrong, enter an number you want:")
+            continue
+        break
 
 
 choice()
