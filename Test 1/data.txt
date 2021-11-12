@@ -1,0 +1,37 @@
+[
+{
+   "city": "Rome",
+   "budget": "235.12",
+   "start_date": "2020-02-25",
+   "end_date": "2021-08-09",
+   "name": "Aaron Skinner"
+},
+  {
+    "city": "Vienna",
+    "budget": "512.73",
+    "start_date": "2020-02-12",
+    "end_date": "2021-07-01",
+    "name": "Eden Baird"
+  },
+   {
+     "city": "Naples",
+     "budget": "128.88",
+     "start_date": "2020-04-13 12:48",
+     "end_date": "2021-11-11",
+     "name": "Rania Finnegan"
+   },
+  {
+    "city": "Paris",
+    "budget": "351.92",
+    "start_date": "2020-07-11 13:00",
+    "end_date": "2021-01-21",
+    "name": "Syeda Hill"
+  },
+  {
+    "city": "Vienna",
+    "budget": "279.83",
+    "start_date": "2020-10-10",
+    "end_date": "2021-02-23",
+    "name": "Carys Reynolds"
+  }
+]
