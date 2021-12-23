@@ -1,0 +1,262 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "Collection of Contracts",
+    "version": "1.0.0",
+    "title": "Contracts",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "tags": [
+    {
+      "name": "Contracts API",
+      "description": "Test API"
+    }
+  ],
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "ContractObject": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "iban": {
+            "type": "string"
+          },
+          "start_date": {
+            "type": "string"
+          },
+          "end_date": {
+            "type": "string"
+          }
+        }
+      },
+      "Id": {
+        "type": "integer",
+        "properties": {
+          "name": {
+            "type": "integer"
+          }
+        }
+      },
+      "Update": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "iban": {
+            "type": "string"
+          },
+          "start_date": {
+            "type": "string"
+          },
+          "end_date": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/contracts": {
+      "post": {
+        "tags": [
+          "Add Contract to API"
+        ],
+        "summary": "Add Contract",
+        "requestBody": {
+          "description": "Post New Contract To Database",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContractObject"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/components/schemas/ContractObject"
+            }
+          },
+          "400": {
+            "description": "Validate Error",
+            "schema": {
+              "$ref": "#/components/schemas/ContractObject"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/components/schemas/ContractObject"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Get All Contracts from API"
+        ],
+        "summary": "Get All Contracts",
+        "responses": {
+          "200": {
+            "description": "OK & CONTRACT OBJECTS",
+            "schema": {
+              "$ref": "#/components/schemas/ContractObject"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND",
+            "schema": {
+              "$ref": "#/components/schemas/ContractObject"
+            }
+          }
+        }
+      }
+    },
+    "/contracts/{id}": {
+      "get": {
+        "tags": [
+          "Get Contract from API"
+        ],
+        "summary": "Get Contract",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Contract id to update",
+            "required": true,
+            "type": "integer",
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK & CONTRACT OBJECT",
+            "schema": {
+              "$ref": "#/components/schemas/ContractObject"
+            }
+          },
+          "404": {
+            "description": "Contract is not found",
+            "schema": {
+              "$ref": "#/components/schemas/ContractObject"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Update Contract on API"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Contract id to update",
+            "required": true,
+            "type": "integer",
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ],
+        "summary": "Update Contract",
+        "requestBody": {
+          "description": "Update Existing Contract On Database",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Update"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK & CONTRACT",
+            "schema": {
+              "$ref": "#/components/schemas/ContractObject"
+            }
+          },
+           "400": {
+            "description": "Validate Error",
+            "schema": {
+              "$ref": "#/components/schemas/ContractObject"
+            }
+          },
+          "404": {
+            "description": "Contract is not found",
+            "schema": {
+              "$ref": "#/components/schemas/ContractObject"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Delete Contract from API"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Contracts id to delete",
+            "required": true,
+            "type": "integer",
+            "schema": {
+              "$ref": "#/components/schemas/Id"
+            }
+          }
+        ],
+        "summary": "Delete Contract",
+        "responses": {
+          "200": {
+            "description": "Contract has been successfully deleted",
+            "schema": {
+              "$ref": "#/components/schemas/ContractObject"
+            }
+          },
+          "404": {
+            "description": "Contract is not found",
+            "schema": {
+              "$ref": "#/components/schemas/ContractObject"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
